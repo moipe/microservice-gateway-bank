@@ -23,6 +23,14 @@ public class BeanConfig {
 						r -> r.path("/api/person/**")
 						.filters(f -> f.stripPrefix(2))
 						.uri("lb://service-person"))
+				/*Descomentar para probar*/
+//				.route("service-transaction", 
+//						r -> r.path("/api/transaction/**")
+//						.filters(f -> f.circuitBreaker(c -> c.setName("defaultCircuit")
+//										.addStatusCode("500")
+//										.setFallbackUri("forward:http://localhost:9950/fallback"))
+//								.stripPrefix(2))
+//						.uri("lb://service-transaction"))
 				.route("service-transaction", 
 						r -> r.path("/api/transaction/**")
 						.filters(f -> f.stripPrefix(2))
